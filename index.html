@@ -39,7 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -80,6 +79,8 @@
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 0.5px;
+            text-decoration: none;
+            color: var(--text-light);
         }
 
         .logo img {
@@ -180,15 +181,15 @@
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid var(--secondary-blue);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 50px;
             font-size: 0.85rem;
             color: var(--secondary-blue);
             margin-bottom: 2rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .hero h1 {
@@ -273,10 +274,10 @@
             66% { transform: translateY(-10px) rotate(-2deg); }
         }
 
-        /* Services Section */
-        .services {
+        /* Features Section */
+        .features {
             padding: 7rem 5%;
-            background: var(--dark-bg);
+            background: var(--darker-bg);
         }
 
         .section-header {
@@ -316,74 +317,9 @@
             line-height: 1.8;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: var(--gradient-2);
-            padding: 3rem 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s;
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary-blue);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            font-size: 4rem;
-            margin-bottom: 1.8rem;
-            display: inline-block;
-        }
-
-        .service-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.2rem;
-            font-weight: 700;
-        }
-
-        .service-card p {
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 7rem 5%;
-            background: var(--darker-bg);
-        }
-
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -414,7 +350,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            color: var(--secondary-blue);
             border: 1px solid var(--secondary-blue);
         }
 
@@ -474,7 +411,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--secondary-blue);
             border: 1px solid var(--secondary-blue);
         }
 
@@ -496,11 +434,14 @@
         }
 
         .rule-card li::before {
-            content: '▸';
+            content: '\f054'; /* Font Awesome chevron-right */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             position: absolute;
             left: -1.5rem;
             color: var(--secondary-blue);
-            font-weight: bold;
+            font-size: 0.8rem;
+            top: 0.9rem;
         }
 
         /* Info Section */
@@ -512,7 +453,7 @@
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2.5rem;
             max-width: 1000px;
             margin: 3rem auto 0 auto;
@@ -520,17 +461,27 @@
 
         .info-item {
             padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .info-item:hover {
+            border-color: var(--secondary-blue);
+            transform: translateY(-5px);
         }
 
         .info-item i {
             font-size: 2.5rem;
             color: var(--secondary-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .info-item h4 {
             margin-bottom: 0.7rem;
             font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .info-item p {
@@ -640,23 +591,23 @@
         }
 
         .social-links a {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: var(--light-bg);
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-light);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             transition: all 0.3s;
             border: 1px solid var(--border-color);
         }
 
         .social-links a:hover {
-            background: var(--secondary-blue);
+            background: #5865F2; /* Discord Blue */
             transform: translateY(-3px);
-            border-color: var(--secondary-blue);
+            border-color: #5865F2;
         }
 
         .footer-bottom {
@@ -705,6 +656,10 @@
             .section-title {
                 font-size: 2.2rem;
             }
+            
+            .rule-card ul {
+                padding-left: 3.5rem;
+            }
         }
 
         @media (max-width: 640px) {
@@ -716,11 +671,11 @@
                 font-size: 1rem;
             }
 
-            .services-grid {
+            .features-grid {
                 grid-template-columns: 1fr;
             }
-
-            .features-grid {
+            
+            .info-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -742,16 +697,15 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">
+        <a href="#accueil" class="logo">
             <img src="https://cdn.discordapp.com/icons/1526331111205240993/beb44fbfa62f45866ed768b0a4e59f2d.webp?size=1024" alt="Logo">
             <div class="logo-text">
                 <span>RP ER:LC QUÉBEC</span>
                 <span>Emergency Response</span>
             </div>
-        </div>
+        </a>
         <ul class="nav-links">
             <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#services">Services</a></li>
             <li><a href="#fonctionnalites">Fonctionnalités</a></li>
             <li><a href="#regles">Règles</a></li>
             <li><a href="#rejoindre">Rejoindre</a></li>
@@ -769,13 +723,13 @@
                 Serveur Roleplay Québec
             </div>
             <h1>RP ER:LC QUÉBEC</h1>
-            <p>Rejoignez l'élite des services d'urgence du Québec dans Emergency Response Liberty County. Vivez une expérience de roleplay immersive, professionnelle et réaliste au sein d'une communauté passionnée.</p>
+            <p>Rejoignez une expérience de roleplay immersive, professionnelle et réaliste sur Emergency Response Liberty County. Une communauté passionnée vous attend pour des sessions de jeu de qualité.</p>
             <div class="hero-buttons">
                 <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
                     <i class="fab fa-discord"></i>
                     Rejoindre le Discord
                 </a>
-                <a href="#services" class="btn btn-secondary">
+                <a href="#fonctionnalites" class="btn btn-secondary">
                     <i class="fas fa-info-circle"></i>
                     Découvrir
                 </a>
@@ -783,44 +737,6 @@
         </div>
         <div class="hero-image">
             <img src="https://cdn.discordapp.com/icons/1526331111205240993/beb44fbfa62f45866ed768b0a4e59f2d.webp?size=1024" alt="Logo RP ER:LC Québec">
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="section-header">
-            <div class="section-tag">Nos Services</div>
-            <h2 class="section-title">Choisissez Votre <span>Vocation</span></h2>
-            <p class="section-subtitle">Rejoignez l'un de nos trois services d'urgence et vivez des expériences de roleplay uniques et réalistes</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card fade-in">
-                <div class="service-icon"></div>
-                <h3>Police (LSPD)</h3>
-                <p>Rejoignez les forces de l'ordre et maintenez la paix à Liberty City. Interventions, enquêtes, patrouilles et arrestations vous attendent dans un cadre réaliste et professionnel.</p>
-                <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-user-plus"></i>
-                    Postuler
-                </a>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">🚒</div>
-                <h3>Pompiers</h3>
-                <p>Devenez pompier et sauvez des vies. Interventions sur incendies, accidents de la route, sauvetages divers et premiers secours dans des scénarios variés et intenses.</p>
-                <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-user-plus"></i>
-                    Postuler
-                </a>
-            </div>
-            <div class="service-card fade-in">
-                <div class="service-icon">🏥</div>
-                <h3>EMS / Ambulanciers</h3>
-                <p>Intégrez le service médical d'urgence. Prenez en charge les blessés, intervenez sur les accidents et prodiguez des soins vitaux dans des situations d'urgence réalistes.</p>
-                <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-user-plus"></i>
-                    Postuler
-                </a>
-            </div>
         </div>
     </section>
 
@@ -833,42 +749,54 @@
         </div>
         <div class="features-grid">
             <div class="feature-item fade-in">
-                <div class="feature-icon">👥</div>
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
                 <div class="feature-content">
                     <h4>Communauté Active</h4>
                     <p>Une communauté chaleureuse, soudée et toujours prête à accueillir et aider les nouveaux membres dans leur intégration.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <div class="feature-icon">️</div>
+                <div class="feature-icon">
+                    <i class="fas fa-microphone-alt"></i>
+                </div>
                 <div class="feature-content">
                     <h4>RP Vocal Immersif</h4>
-                    <p>Salons vocaux organisés pour chaque service avec systèmes de radios dédiés pour un maximum de réalisme.</p>
+                    <p>Salons vocaux organisés avec des systèmes de communication dédiés pour un maximum de réalisme et d'immersion.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <div class="feature-icon">📅</div>
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
                 <div class="feature-content">
                     <h4>Événements Réguliers</h4>
-                    <p>Sessions de roleplay organisées chaque semaine avec scénarios variés, événements spéciaux et situations d'urgence.</p>
+                    <p>Sessions de roleplay organisées régulièrement avec des scénarios variés et des situations d'urgence dynamiques.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <div class="feature-icon">🎓</div>
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
                 <div class="feature-content">
                     <h4>Formation Complète</h4>
-                    <p>Formation assurée et encadrée pour tous les nouveaux membres rejoignant les services d'urgence.</p>
+                    <p>Encadrement et formation assurée pour tous les nouveaux membres afin de garantir un roleplay de haute qualité.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <div class="feature-icon">🛡️</div>
+                <div class="feature-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
                 <div class="feature-content">
                     <h4>Staff à l'Écoute</h4>
                     <p>Une équipe modératrice professionnelle, disponible et réactive 7 jours sur 7 pour vous accompagner.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <div class="feature-icon">️</div>
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
                 <div class="feature-content">
                     <h4>Serveur Optimisé</h4>
                     <p>Organisation professionnelle, bots de qualité et structure pensée pour une expérience utilisateur optimale.</p>
@@ -888,7 +816,9 @@
             <div class="rules-grid">
                 <div class="rule-card fade-in">
                     <div class="rule-header">
-                        <div class="rule-icon">🤝</div>
+                        <div class="rule-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
                         <h3>Respect et Courtoisie</h3>
                     </div>
                     <ul>
@@ -896,47 +826,48 @@
                         <li>Aucun comportement toxique, harcèlement ou insulte toléré</li>
                         <li>Interdiction de discrimination sous toutes ses formes</li>
                         <li>Garder un langage correct et professionnel</li>
-                        <li>Éviter les sujets polémiques (politique, religion)</li>
                     </ul>
                 </div>
                 <div class="rule-card fade-in">
                     <div class="rule-header">
-                        <div class="rule-icon"></div>
+                        <div class="rule-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
                         <h3>Roleplay (RP)</h3>
                     </div>
                     <ul>
                         <li>Respecter le RP en toutes circonstances</li>
-                        <li>Pas de Meta Gaming (utiliser des infos hors RP)</li>
-                        <li>Pas de Power Gaming (actions irréalistes)</li>
-                        <li>Respecter le Fear RP (peur de mourir)</li>
-                        <li>Le New Life est obligatoire après une mort RP</li>
-                        <li>Pas de RDM/VDM (tuer sans raison valable)</li>
+                        <li>Interdiction formelle de Meta Gaming et Power Gaming</li>
+                        <li>Respecter le Fear RP (peur de mourir) et le New Life</li>
+                        <li>Interdiction du RDM et VDM (tuer sans raison valable)</li>
                     </ul>
                 </div>
                 <div class="rule-card fade-in">
                     <div class="rule-header">
-                        <div class="rule-icon">🎤</div>
+                        <div class="rule-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
                         <h3>Communication Vocale</h3>
                     </div>
                     <ul>
                         <li>Utiliser un micro de qualité correcte</li>
-                        <li>Pas de bruits parasites (musique, cris, etc.)</li>
-                        <li>Respecter le canal radio en service</li>
+                        <li>Interdiction des bruits parasites (musique, cris, etc.)</li>
+                        <li>Respecter les canaux de communication en service</li>
                         <li>Parler clairement et calmement</li>
-                        <li>Interdiction du soundboard en service</li>
                     </ul>
                 </div>
                 <div class="rule-card fade-in">
                     <div class="rule-header">
-                        <div class="rule-icon">⚠️</div>
+                        <div class="rule-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
                         <h3>Modération</h3>
                     </div>
                     <ul>
-                        <li>Le staff a le dernier mot</li>
-                        <li>L'ignorance des règles n'est pas une excuse</li>
-                        <li>Sanctions selon la gravité (avertissement, mute, kick, ban)</li>
-                        <li>Les décisions du staff sont sans appel</li>
-                        <li>Respecter les membres du staff</li>
+                        <li>Le staff a le dernier mot sur toutes les décisions</li>
+                        <li>L'ignorance des règles n'est pas une excuse valable</li>
+                        <li>Sanctions appliquées selon la gravité des faits</li>
+                        <li>Les décisions du staff sont finales et sans appel</li>
                     </ul>
                 </div>
             </div>
@@ -951,9 +882,9 @@
         </div>
         <div class="info-grid">
             <div class="info-item fade-in">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-calendar-check"></i>
                 <h4>Création</h4>
-                <p>Serveur créé en 2026</p>
+                <p>Fondé en 2026</p>
             </div>
             <div class="info-item fade-in">
                 <i class="fas fa-gamepad"></i>
@@ -961,7 +892,7 @@
                 <p>Emergency Response Liberty County</p>
             </div>
             <div class="info-item fade-in">
-                <i class="fas fa-globe"></i>
+                <i class="fas fa-map-marker-alt"></i>
                 <h4>Région</h4>
                 <p>Québec, Canada</p>
             </div>
@@ -977,7 +908,7 @@
     <section class="cta" id="rejoindre">
         <div class="cta-content">
             <h2>Prêt à Rejoindre l'Aventure ?</h2>
-            <p>Rejoignez dès maintenant notre communauté et commencez votre carrière dans les services d'urgence du Québec. Nous vous attendons !</p>
+            <p>Rejoignez dès maintenant notre communauté et commencez votre expérience de roleplay. Nous vous attendons sur le serveur !</p>
             <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-white">
                 <i class="fab fa-discord"></i>
                 Rejoindre le Serveur Discord
@@ -997,14 +928,8 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="https://discord.gg/wWkZTn7QKv" target="_blank" title="Discord">
+                    <a href="https://discord.gg/wWkZTn7QKv" target="_blank" title="Rejoindre notre Discord">
                         <i class="fab fa-discord"></i>
-                    </a>
-                    <a href="#" target="_blank" title="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="#" target="_blank" title="Twitch">
-                        <i class="fab fa-twitch"></i>
                     </a>
                 </div>
             </div>
