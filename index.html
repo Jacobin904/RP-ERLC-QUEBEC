@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RP ER:LC Québec - Emergency Response Liberty County</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,19 +16,45 @@
         :root {
             --primary-blue: #1e3a8a;
             --secondary-blue: #3b82f6;
-            --accent-red: #dc2626;
+            --accent-blue: #60a5fa;
             --dark-bg: #0f172a;
+            --darker-bg: #020617;
             --light-bg: #1e293b;
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
+            --border-color: #334155;
+            --gradient-1: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --gradient-2: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-blue);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
         }
 
         /* Navigation */
@@ -35,324 +62,538 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1.2rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 2px solid var(--secondary-blue);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .logo img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
+            border: 2px solid var(--secondary-blue);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span:first-child {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .logo-text span:last-child {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            font-weight: 400;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--text-gray);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--secondary-blue);
+            color: var(--text-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--text-light);
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 70px;
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-bg) 100%);
+            margin-top: 80px;
+            padding: 6rem 5%;
+            background: var(--gradient-2);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 3rem;
-            min-height: 80vh;
+            gap: 4rem;
+            min-height: 85vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .hero-content {
             flex: 1;
+            max-width: 650px;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--secondary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--secondary-blue);
+            margin-bottom: 2rem;
+            font-weight: 500;
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, var(--secondary-blue));
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-gray);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
+            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1rem 2rem;
+            padding: 1rem 2.2rem;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .btn-primary {
-            background: var(--secondary-blue);
+            background: var(--gradient-1);
             color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
         }
 
         .btn-primary:hover {
-            background: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid var(--secondary-blue);
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: var(--secondary-blue);
+            border-color: var(--secondary-blue);
+            background: rgba(59, 130, 246, 0.1);
         }
 
         .hero-image {
             flex: 1;
             text-align: center;
+            z-index: 1;
         }
 
         .hero-image img {
             max-width: 100%;
-            width: 500px;
-            animation: float 3s ease-in-out infinite;
+            width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+            border: 3px solid var(--border-color);
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 3rem 5%;
-            background: var(--light-bg);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--dark-bg);
-            border-radius: 12px;
-            border: 1px solid var(--secondary-blue);
-        }
-
-        .stat-card i {
-            font-size: 2.5rem;
-            color: var(--secondary-blue);
-            margin-bottom: 1rem;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--secondary-blue);
-        }
-
-        .stat-label {
-            color: var(--text-gray);
-            margin-top: 0.5rem;
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
         }
 
         /* Services Section */
         .services {
-            padding: 5rem 5%;
+            padding: 7rem 5%;
+            background: var(--dark-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary-blue);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--secondary-blue);
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         .section-title span {
-            color: var(--secondary-blue);
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .service-card {
-            background: var(--light-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
+            background: var(--gradient-2);
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
             text-align: center;
-            transition: transform 0.3s;
-            border: 2px solid transparent;
+            transition: all 0.4s;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
             border-color: var(--secondary-blue);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-icon {
             font-size: 4rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            display: inline-block;
         }
 
         .service-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
         }
 
         .service-card p {
             color: var(--text-gray);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
         /* Features Section */
         .features {
-            padding: 5rem 5%;
-            background: var(--light-bg);
+            padding: 7rem 5%;
+            background: var(--darker-bg);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .feature-item {
             display: flex;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--dark-bg);
-            border-radius: 12px;
+            gap: 1.5rem;
+            padding: 2.2rem;
+            background: var(--light-bg);
+            border-radius: 16px;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
         }
 
-        .feature-item i {
-            font-size: 2rem;
-            color: var(--secondary-blue);
+        .feature-item:hover {
+            transform: translateX(10px);
+            border-color: var(--secondary-blue);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 1px solid var(--secondary-blue);
         }
 
         .feature-content h4 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .feature-content p {
             color: var(--text-gray);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         /* Rules Section */
         .rules {
-            padding: 5rem 5%;
+            padding: 7rem 5%;
+            background: var(--dark-bg);
         }
 
         .rules-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .rule-item {
-            background: var(--light-bg);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--secondary-blue);
+        .rules-grid {
+            display: grid;
+            gap: 2rem;
         }
 
-        .rule-item h3 {
-            color: var(--secondary-blue);
-            margin-bottom: 1rem;
+        .rule-card {
+            background: var(--gradient-2);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--secondary-blue);
+            transition: all 0.3s;
+        }
+
+        .rule-card:hover {
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+            transform: translateX(5px);
+        }
+
+        .rule-header {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .rule-item ul {
+        .rule-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 1px solid var(--secondary-blue);
+        }
+
+        .rule-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .rule-card ul {
             list-style: none;
-            padding-left: 1rem;
+            padding-left: 4.5rem;
         }
 
-        .rule-item li {
-            padding: 0.5rem 0;
+        .rule-card li {
+            padding: 0.7rem 0;
             color: var(--text-gray);
+            position: relative;
+            line-height: 1.6;
         }
 
-        .rule-item li:before {
-            content: "▸ ";
+        .rule-card li::before {
+            content: '▸';
+            position: absolute;
+            left: -1.5rem;
             color: var(--secondary-blue);
-            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 5rem 5%;
+            background: var(--darker-bg);
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 3rem auto 0 auto;
+        }
+
+        .info-item {
+            padding: 2rem;
+        }
+
+        .info-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .info-item h4 {
+            margin-bottom: 0.7rem;
+            font-size: 1.2rem;
+        }
+
+        .info-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
         }
 
         /* CTA Section */
         .cta {
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 6rem 5%;
+            background: var(--gradient-1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .cta h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         .cta p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-blue);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
         footer {
-            background: var(--light-bg);
-            padding: 3rem 5%;
-            text-align: center;
-            border-top: 2px solid var(--secondary-blue);
+            background: var(--darker-bg);
+            padding: 4rem 5% 2rem 5%;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-content {
@@ -360,43 +601,85 @@
             margin: 0 auto;
         }
 
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--secondary-blue);
+        }
+
+        .footer-logo-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-logo-text p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 1.2rem;
         }
 
         .social-links a {
+            width: 45px;
+            height: 45px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-light);
-            font-size: 2rem;
-            transition: color 0.3s;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
         }
 
         .social-links a:hover {
-            color: var(--secondary-blue);
+            background: var(--secondary-blue);
+            transform: translateY(-3px);
+            border-color: var(--secondary-blue);
         }
 
         .footer-bottom {
-            margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid var(--dark-bg);
+            margin-top: 2rem;
+            text-align: center;
             color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin: 0.5rem 0;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
+        @media (max-width: 968px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
             }
 
             .hero h1 {
@@ -407,16 +690,46 @@
                 justify-content: center;
             }
 
-            .stats {
+            .hero-image img {
+                width: 350px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Scroll Animation */
+        /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s, transform 0.8s;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .fade-in.visible {
@@ -430,8 +743,11 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">
-            <i class="fas fa-shield-alt" style="color: var(--secondary-blue); font-size: 2.5rem;"></i>
-            <span>RP ER:LC QUÉBEC</span>
+            <img src="https://cdn.discordapp.com/icons/1526331111205240993/beb44fbfa62f45866ed768b0a4e59f2d.webp?size=1024" alt="Logo">
+            <div class="logo-text">
+                <span>RP ER:LC QUÉBEC</span>
+                <span>Emergency Response</span>
+            </div>
         </div>
         <ul class="nav-links">
             <li><a href="#accueil">Accueil</a></li>
@@ -448,57 +764,41 @@
     <!-- Hero Section -->
     <section class="hero" id="accueil">
         <div class="hero-content">
+            <div class="badge">
+                <i class="fas fa-shield-alt"></i>
+                Serveur Roleplay Québec
+            </div>
             <h1>RP ER:LC QUÉBEC</h1>
-            <p>Rejoignez l'élite des services d'urgence du Québec dans Emergency Response Liberty County. Vivez une expérience de roleplay immersive et professionnelle.</p>
+            <p>Rejoignez l'élite des services d'urgence du Québec dans Emergency Response Liberty County. Vivez une expérience de roleplay immersive, professionnelle et réaliste au sein d'une communauté passionnée.</p>
             <div class="hero-buttons">
-                <a href="https://discord.gg/TON-LIEN" target="_blank" class="btn btn-primary">
+                <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
                     <i class="fab fa-discord"></i>
                     Rejoindre le Discord
                 </a>
                 <a href="#services" class="btn btn-secondary">
                     <i class="fas fa-info-circle"></i>
-                    En savoir plus
+                    Découvrir
                 </a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="https://cdn.discordapp.com/icons/1526331111205240993/40fdea11e2d104dc33990e0ee0ed011f.webp?size=1024" alt="Logo RP ER:LC Québec">
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stat-card fade-in">
-            <i class="fas fa-users"></i>
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Membres Actifs</div>
-        </div>
-        <div class="stat-card fade-in">
-            <i class="fas fa-shield-alt"></i>
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Policiers</div>
-        </div>
-        <div class="stat-card fade-in">
-            <i class="fas fa-fire"></i>
-            <div class="stat-number">30+</div>
-            <div class="stat-label">Pompiers</div>
-        </div>
-        <div class="stat-card fade-in">
-            <i class="fas fa-ambulance"></i>
-            <div class="stat-number">40+</div>
-            <div class="stat-label">Ambulanciers</div>
+            <img src="https://cdn.discordapp.com/icons/1526331111205240993/beb44fbfa62f45866ed768b0a4e59f2d.webp?size=1024" alt="Logo RP ER:LC Québec">
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 class="section-title">Nos <span>Services</span></h2>
+        <div class="section-header">
+            <div class="section-tag">Nos Services</div>
+            <h2 class="section-title">Choisissez Votre <span>Vocation</span></h2>
+            <p class="section-subtitle">Rejoignez l'un de nos trois services d'urgence et vivez des expériences de roleplay uniques et réalistes</p>
+        </div>
         <div class="services-grid">
             <div class="service-card fade-in">
-                <div class="service-icon">🚓</div>
+                <div class="service-icon"></div>
                 <h3>Police (LSPD)</h3>
-                <p>Rejoignez les forces de l'ordre et maintenez la paix à Liberty City. Interventions, enquêtes et patrouilles vous attendent.</p>
-                <a href="#" class="btn btn-primary">
+                <p>Rejoignez les forces de l'ordre et maintenez la paix à Liberty City. Interventions, enquêtes, patrouilles et arrestations vous attendent dans un cadre réaliste et professionnel.</p>
+                <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
                     <i class="fas fa-user-plus"></i>
                     Postuler
                 </a>
@@ -506,8 +806,8 @@
             <div class="service-card fade-in">
                 <div class="service-icon">🚒</div>
                 <h3>Pompiers</h3>
-                <p>Devenez pompier et sauvez des vies. Interventions sur incendies, accidents et sauvetages divers.</p>
-                <a href="#" class="btn btn-primary">
+                <p>Devenez pompier et sauvez des vies. Interventions sur incendies, accidents de la route, sauvetages divers et premiers secours dans des scénarios variés et intenses.</p>
+                <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
                     <i class="fas fa-user-plus"></i>
                     Postuler
                 </a>
@@ -515,8 +815,8 @@
             <div class="service-card fade-in">
                 <div class="service-icon">🏥</div>
                 <h3>EMS / Ambulanciers</h3>
-                <p>Intégrez le service médical d'urgence. Soignez les blessés et intervenez sur les accidents.</p>
-                <a href="#" class="btn btn-primary">
+                <p>Intégrez le service médical d'urgence. Prenez en charge les blessés, intervenez sur les accidents et prodiguez des soins vitaux dans des situations d'urgence réalistes.</p>
+                <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-primary">
                     <i class="fas fa-user-plus"></i>
                     Postuler
                 </a>
@@ -526,48 +826,52 @@
 
     <!-- Features Section -->
     <section class="features" id="fonctionnalites">
-        <h2 class="section-title">Pourquoi Nous <span>Rejoindre ?</span></h2>
+        <div class="section-header">
+            <div class="section-tag">Pourquoi Nous Rejoindre</div>
+            <h2 class="section-title">Une Expérience <span>Unique</span></h2>
+            <p class="section-subtitle">Découvrez tous les avantages de notre serveur Discord dédié au roleplay ER:LC</p>
+        </div>
         <div class="features-grid">
             <div class="feature-item fade-in">
-                <i class="fas fa-users"></i>
+                <div class="feature-icon">👥</div>
                 <div class="feature-content">
                     <h4>Communauté Active</h4>
-                    <p>Une communauté chaleureuse et toujours prête à aider les nouveaux membres.</p>
+                    <p>Une communauté chaleureuse, soudée et toujours prête à accueillir et aider les nouveaux membres dans leur intégration.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <i class="fas fa-microphone"></i>
+                <div class="feature-icon">️</div>
                 <div class="feature-content">
                     <h4>RP Vocal Immersif</h4>
-                    <p>Salons vocaux organisés pour chaque service avec radios dédiées.</p>
+                    <p>Salons vocaux organisés pour chaque service avec systèmes de radios dédiés pour un maximum de réalisme.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <i class="fas fa-calendar-alt"></i>
+                <div class="feature-icon">📅</div>
                 <div class="feature-content">
                     <h4>Événements Réguliers</h4>
-                    <p>Sessions RP organisées chaque semaine avec scénarios variés.</p>
+                    <p>Sessions de roleplay organisées chaque semaine avec scénarios variés, événements spéciaux et situations d'urgence.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <i class="fas fa-graduation-cap"></i>
+                <div class="feature-icon">🎓</div>
                 <div class="feature-content">
                     <h4>Formation Complète</h4>
-                    <p>Formation assurée pour tous les nouveaux membres des services.</p>
+                    <p>Formation assurée et encadrée pour tous les nouveaux membres rejoignant les services d'urgence.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <i class="fas fa-shield-alt"></i>
+                <div class="feature-icon">🛡️</div>
                 <div class="feature-content">
                     <h4>Staff à l'Écoute</h4>
-                    <p>Une équipe modératrice disponible et réactive 7j/7.</p>
+                    <p>Une équipe modératrice professionnelle, disponible et réactive 7 jours sur 7 pour vous accompagner.</p>
                 </div>
             </div>
             <div class="feature-item fade-in">
-                <i class="fas fa-cog"></i>
+                <div class="feature-icon">️</div>
                 <div class="feature-content">
                     <h4>Serveur Optimisé</h4>
-                    <p>Organisation professionnelle et bots de qualité pour une meilleure expérience.</p>
+                    <p>Organisation professionnelle, bots de qualité et structure pensée pour une expérience utilisateur optimale.</p>
                 </div>
             </div>
         </div>
@@ -575,74 +879,138 @@
 
     <!-- Rules Section -->
     <section class="rules" id="regles">
-        <h2 class="section-title">Règles du <span>Serveur</span></h2>
+        <div class="section-header">
+            <div class="section-tag">Règlement</div>
+            <h2 class="section-title">Règles du <span>Serveur</span></h2>
+            <p class="section-subtitle">Le respect de ces règles est essentiel pour garantir une expérience de roleplay de qualité pour tous</p>
+        </div>
         <div class="rules-container">
-            <div class="rule-item fade-in">
-                <h3><i class="fas fa-user-friends"></i> Respect et Courtoisie</h3>
-                <ul>
-                    <li>Le respect est obligatoire entre tous les membres</li>
-                    <li>Aucun comportement toxique ou harcèlement</li>
-                    <li>Interdiction de discrimination sous toutes ses formes</li>
-                    <li>Garder un langage correct et professionnel</li>
-                </ul>
+            <div class="rules-grid">
+                <div class="rule-card fade-in">
+                    <div class="rule-header">
+                        <div class="rule-icon">🤝</div>
+                        <h3>Respect et Courtoisie</h3>
+                    </div>
+                    <ul>
+                        <li>Le respect est obligatoire entre tous les membres</li>
+                        <li>Aucun comportement toxique, harcèlement ou insulte toléré</li>
+                        <li>Interdiction de discrimination sous toutes ses formes</li>
+                        <li>Garder un langage correct et professionnel</li>
+                        <li>Éviter les sujets polémiques (politique, religion)</li>
+                    </ul>
+                </div>
+                <div class="rule-card fade-in">
+                    <div class="rule-header">
+                        <div class="rule-icon"></div>
+                        <h3>Roleplay (RP)</h3>
+                    </div>
+                    <ul>
+                        <li>Respecter le RP en toutes circonstances</li>
+                        <li>Pas de Meta Gaming (utiliser des infos hors RP)</li>
+                        <li>Pas de Power Gaming (actions irréalistes)</li>
+                        <li>Respecter le Fear RP (peur de mourir)</li>
+                        <li>Le New Life est obligatoire après une mort RP</li>
+                        <li>Pas de RDM/VDM (tuer sans raison valable)</li>
+                    </ul>
+                </div>
+                <div class="rule-card fade-in">
+                    <div class="rule-header">
+                        <div class="rule-icon">🎤</div>
+                        <h3>Communication Vocale</h3>
+                    </div>
+                    <ul>
+                        <li>Utiliser un micro de qualité correcte</li>
+                        <li>Pas de bruits parasites (musique, cris, etc.)</li>
+                        <li>Respecter le canal radio en service</li>
+                        <li>Parler clairement et calmement</li>
+                        <li>Interdiction du soundboard en service</li>
+                    </ul>
+                </div>
+                <div class="rule-card fade-in">
+                    <div class="rule-header">
+                        <div class="rule-icon">⚠️</div>
+                        <h3>Modération</h3>
+                    </div>
+                    <ul>
+                        <li>Le staff a le dernier mot</li>
+                        <li>L'ignorance des règles n'est pas une excuse</li>
+                        <li>Sanctions selon la gravité (avertissement, mute, kick, ban)</li>
+                        <li>Les décisions du staff sont sans appel</li>
+                        <li>Respecter les membres du staff</li>
+                    </ul>
+                </div>
             </div>
-            <div class="rule-item fade-in">
-                <h3><i class="fas fa-gamepad"></i> Roleplay (RP)</h3>
-                <ul>
-                    <li>Respecter le RP en toutes circonstances</li>
-                    <li>Pas de Meta Gaming ou Power Gaming</li>
-                    <li>Respecter le Fear RP et le New Life</li>
-                    <li>Pas de RDM/VDM (tuer sans raison)</li>
-                </ul>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="section-header">
+            <div class="section-tag">Informations</div>
+            <h2 class="section-title">À Propos du <span>Serveur</span></h2>
+        </div>
+        <div class="info-grid">
+            <div class="info-item fade-in">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Création</h4>
+                <p>Serveur créé en 2026</p>
             </div>
-            <div class="rule-item fade-in">
-                <h3><i class="fas fa-microphone-alt"></i> Communication Vocale</h3>
-                <ul>
-                    <li>Utiliser un micro de qualité correcte</li>
-                    <li>Pas de bruits parasites (musique, cris)</li>
-                    <li>Respecter le canal radio en service</li>
-                    <li>Parler clairement et calmement</li>
-                </ul>
+            <div class="info-item fade-in">
+                <i class="fas fa-gamepad"></i>
+                <h4>Jeu</h4>
+                <p>Emergency Response Liberty County</p>
             </div>
-            <div class="rule-item fade-in">
-                <h3><i class="fas fa-exclamation-triangle"></i> Modération</h3>
-                <ul>
-                    <li>Le staff a le dernier mot</li>
-                    <li>L'ignorance des règles n'est pas une excuse</li>
-                    <li>Sanctions possibles selon la gravité</li>
-                    <li>Les décisions du staff sont sans appel</li>
-                </ul>
+            <div class="info-item fade-in">
+                <i class="fas fa-globe"></i>
+                <h4>Région</h4>
+                <p>Québec, Canada</p>
+            </div>
+            <div class="info-item fade-in">
+                <i class="fas fa-language"></i>
+                <h4>Langue</h4>
+                <p>Français</p>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta" id="rejoindre">
-        <h2>Prêt à Rejoindre l'Aventure ?</h2>
-        <p>Rejoignez dès maintenant notre communauté et commencez votre carrière dans les services d'urgence !</p>
-        <a href="https://discord.gg/TON-LIEN" target="_blank" class="btn btn-primary" style="font-size: 1.3rem; padding: 1.2rem 3rem;">
-            <i class="fab fa-discord"></i>
-            Rejoindre le Serveur Discord
-        </a>
+        <div class="cta-content">
+            <h2>Prêt à Rejoindre l'Aventure ?</h2>
+            <p>Rejoignez dès maintenant notre communauté et commencez votre carrière dans les services d'urgence du Québec. Nous vous attendons !</p>
+            <a href="https://discord.gg/wWkZTn7QKv" target="_blank" class="btn btn-white">
+                <i class="fab fa-discord"></i>
+                Rejoindre le Serveur Discord
+            </a>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
-                <i class="fas fa-shield-alt" style="color: var(--secondary-blue); font-size: 2.5rem;"></i>
-                <span style="font-size: 1.8rem;">RP ER:LC QUÉBEC</span>
-            </div>
-            <p style="color: var(--text-gray); margin-bottom: 2rem;">Emergency Response Liberty County - Québec Division</p>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitch"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="https://cdn.discordapp.com/icons/1526331111205240993/beb44fbfa62f45866ed768b0a4e59f2d.webp?size=1024" alt="Logo">
+                    <div class="footer-logo-text">
+                        <h3>RP ER:LC QUÉBEC</h3>
+                        <p>Emergency Response Liberty County - Québec Division</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://discord.gg/wWkZTn7QKv" target="_blank" title="Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" target="_blank" title="Twitch">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 RP ER:LC Québec. Tous droits réservés.</p>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Site créé avec <i class="fas fa-heart" style="color: var(--accent-red);"></i> pour la communauté</p>
+                <p>&copy; 2026 RP ER:LC Québec. Tous droits réservés.</p>
+                <p>Site créé avec <i class="fas fa-heart" style="color: var(--accent-blue);"></i> pour la communauté</p>
             </div>
         </div>
     </footer>
@@ -664,7 +1032,28 @@
 
         document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
-        // Smooth Scroll
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'rgba(15, 23, 42, 0.98)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1.5rem';
+                navLinks.style.borderBottom = '1px solid var(--border-color)';
+            }
+        });
+
+        // Smooth Scroll for Safari
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -677,54 +1066,6 @@
                 }
             });
         });
-
-        // Mobile Menu Toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.right = '0';
-            navLinks.style.background = 'rgba(15, 23, 42, 0.95)';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.padding = '2rem';
-        });
-
-        // Counter Animation
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
-
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const target = +counter.innerText.replace(/\D/g,'');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    const suffix = counter.innerText.replace(/\d+/g, '');
-                    counter.innerText = Math.ceil(count + inc) + suffix;
-                    setTimeout(animateCounters, 20);
-                } else {
-                    counter.innerText = target + counter.innerText.replace(/\d+/g, '');
-                }
-            });
-        };
-
-        // Trigger counters when stats section is visible
-        const statsSection = document.querySelector('.stats');
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statsObserver.observe(statsSection);
     </script>
 </body>
 </html>
